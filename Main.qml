@@ -14,11 +14,42 @@ Window {
     }
 
     ColumnLayout{
-        anchors.fill: parent
+        //anchors.fill: parent
+        anchors.centerIn: parent
         Text {
             //text://_apiReader.dataFromApi
             Layout.preferredHeight: 100
             Layout.preferredWidth: 200
+        }
+
+        TextField{
+            id:_usernameTxt
+            placeholderText: "Username"
+            Layout.preferredHeight: 50
+            Layout.preferredWidth: 200
+            font.pointSize: 18
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        TextField{
+            id:_passwordTxt
+            placeholderText: "Password"
+            Layout.preferredHeight: 50
+            Layout.preferredWidth: 200
+            font.pointSize: 18
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        Button{
+            Layout.preferredHeight: 50
+            Layout.preferredWidth: 200
+            text: "LogIn"
+            onClicked: {
+
+                _apiReader.username = _usernameTxt.text
+                _apiReader.password = _passwordTxt.text
+                _apiReader.logIn()
+            }
         }
 
         Button{
