@@ -32,6 +32,7 @@ public:
 public slots:
     void showData();
     void logIn();
+    void testJson();
 
 signals:
     void dataFromApiChanged();

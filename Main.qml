@@ -54,7 +54,7 @@ Window {
 
         Button{
             text: "Fetch Data"
-            onClicked: _apiReader.showData()
+            onClicked: _apiReader.showData()//_apiReader.testJson()//_apiReader.showData()
         }
 
     }
