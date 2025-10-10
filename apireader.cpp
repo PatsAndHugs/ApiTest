@@ -1,5 +1,5 @@
 #include "apireader.h"
-
+#include "triggerclass.h"
 ApiReader::ApiReader(QObject *parent) : QObject(parent)
 {
 
@@ -18,6 +18,16 @@ void ApiReader::setUsername(QString usernameVal)
 void ApiReader::setPassword(QString passwordVal)
 {
     m_password = passwordVal;
+}
+
+void ApiReader::testTriggered()
+{
+    qDebug()<<"SHIGURE UI";
+    // TriggerClass triggerClass;
+    // //emit triggerClass->triggerSignal();
+    // QObject::connect(&triggerClass, &TriggerClass::triggerSignal, this, [] (){
+    //    qDebug()<<"SHIGURE UI";
+    // });
 }
 
 void ApiReader::testJson()

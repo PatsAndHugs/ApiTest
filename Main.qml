@@ -13,6 +13,10 @@ Window {
         id:_apiReader
     }
 
+    TriggerClass{
+        id:_triggerClass
+    }
+
     ColumnLayout{
         //anchors.fill: parent
         anchors.centerIn: parent
@@ -54,8 +58,19 @@ Window {
 
         Button{
             text: "Fetch Data"
-            onClicked: _apiReader.showData()//_apiReader.testJson()//_apiReader.showData()
+            onClicked:{ _triggerClass.triggerSignal()
+                        _triggerClass.testTrigger()
+
+
+                        }//_apiReader.showData()//_apiReader.testJson()//_apiReader.showData()
+            Connections{
+                target: _triggerClass
+                function onTriggerSignal(){
+                    console.log("received signal from c++");
+                }
+            }
         }
+
 
     }
 }

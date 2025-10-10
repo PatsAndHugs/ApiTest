@@ -2,13 +2,14 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <apireader.h>
+#include <triggerclass.h>
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<ApiReader>("com.example.api", 1, 0, "ApiReader");
-
+    qmlRegisterType<TriggerClass>("com.example.api", 1, 0, "TriggerClass");
     //ApiReader apiReader;
 
     QQmlApplicationEngine engine;

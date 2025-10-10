@@ -29,15 +29,18 @@ public:
     void setPassword(QString passwordVal);
 
 
+
 public slots:
     void showData();
     void logIn();
     void testJson();
+    void testTriggered();
 
 signals:
     void dataFromApiChanged();
     void usernameChanged();
     void passwordChanged();
+    void signalTriggered();
 
 private:
     QString m_dataFromApi;

@@ -18,6 +18,8 @@ qt_add_qml_module(appApiTest
     QML_FILES
         Main.qml
         SOURCES apireader.h apireader.cpp
+        SOURCES apiinterface.h apiinterface.cpp
+        SOURCES triggerclass.h triggerclass.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
