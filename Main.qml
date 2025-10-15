@@ -52,7 +52,19 @@ Window {
 
                 _apiReader.username = _usernameTxt.text
                 _apiReader.password = _passwordTxt.text
-                _apiReader.logIn()
+                //_apiReader.logIn()
+                _apiReader.testLogin()
+            }
+            Connections{
+                target: _apiReader
+                function onUserLoginResultReceived(){
+                    if(_apiReader.getLoginResult() === true)
+                    {
+                        console.log("Login Success")
+                    }
+                    else
+                        console.log("Login Failed")
+                }
             }
         }
 

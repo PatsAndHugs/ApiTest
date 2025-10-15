@@ -2,7 +2,7 @@
 #include "triggerclass.h"
 ApiReader::ApiReader(QObject *parent) : QObject(parent)
 {
-
+    //triggerClass = new TriggerClass;
 }
 
 void ApiReader::setDataFromApi(QString newval)
@@ -28,6 +28,25 @@ void ApiReader::testTriggered()
     // QObject::connect(&triggerClass, &TriggerClass::triggerSignal, this, [] (){
     //    qDebug()<<"SHIGURE UI";
     // });
+}
+
+void ApiReader::testLogin()
+{
+    QString newUsername = m_username.simplified();
+    QString newPassword = m_password.simplified();
+    if(m_username != "" && m_password != "")
+    {
+        TriggerClass *triggerClass = new TriggerClass;
+        triggerClass->loginUser(newUsername, newPassword);
+        QObject::connect(triggerClass, &TriggerClass::loginResultReceived, this, [=](){
+            m_loginResult = triggerClass->getLoginResult();
+            emit userLoginResultReceived();
+            qDebug()<<"loginResultReceived "<<m_loginResult;
+
+
+        });
+        //connect(apiConnClass, &ApiConnectionClass::loginResultReceived, this, &UserLoginClass::userLoginResultReceived);
+    }
 }
 
 void ApiReader::testJson()
@@ -200,6 +219,8 @@ void ApiReader::logIn()
             qDebug() << "Network Error:" << reply->errorString();
         }
         reply->deleteLater(); // Clean up the reply object
+
+        qDebug() << "Network finished";
     });
 }
 

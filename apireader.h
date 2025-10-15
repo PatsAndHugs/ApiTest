@@ -8,6 +8,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
+#include "triggerclass.h"
+
 class ApiReader : public QObject
 {
     Q_OBJECT
@@ -29,18 +31,20 @@ public:
     void setPassword(QString passwordVal);
 
 
-
 public slots:
     void showData();
     void logIn();
     void testJson();
     void testTriggered();
+    void testLogin();
+    bool getLoginResult(){return m_loginResult;}
 
 signals:
     void dataFromApiChanged();
     void usernameChanged();
     void passwordChanged();
     void signalTriggered();
+    void userLoginResultReceived();
 
 private:
     QString m_dataFromApi;
@@ -49,6 +53,9 @@ private:
 
     QString m_username;
     QString m_password;
+    //TriggerClass *triggerClass;
+    bool m_loginResult;
+
 };
 
 #endif // APIREADER_H
